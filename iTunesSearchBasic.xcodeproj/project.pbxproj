@@ -14,6 +14,9 @@
 		A14CCBF8215CEA1C00A699E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14CCBF7215CEA1C00A699E6 /* Assets.xcassets */; };
 		A14CCBFB215CEA1C00A699E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14CCBF9215CEA1C00A699E6 /* LaunchScreen.storyboard */; };
 		A14CCC06215CEA1C00A699E6 /* iTunesSearchBasicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14CCC05215CEA1C00A699E6 /* iTunesSearchBasicTests.swift */; };
+		A14CCC12215CF07F00A699E6 /* iTunesAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14CCC11215CF07F00A699E6 /* iTunesAPIClient.swift */; };
+		A14CCC14215CF08B00A699E6 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14CCC13215CF08B00A699E6 /* Result.swift */; };
+		A14CCC16215CF09A00A699E6 /* SearchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14CCC15215CF09A00A699E6 /* SearchError.swift */; };
 		A14CCC19215CF11A00A699E6 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14CCC18215CF11A00A699E6 /* Song.swift */; };
 		F59C896B41A0DF01633E5FD4 /* Pods_iTunesSearchBasic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5F11579948FB9AF73A71294 /* Pods_iTunesSearchBasic.framework */; };
 /* End PBXBuildFile section */
@@ -44,6 +47,9 @@
 		A14CCC01215CEA1C00A699E6 /* iTunesSearchBasicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTunesSearchBasicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14CCC05215CEA1C00A699E6 /* iTunesSearchBasicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesSearchBasicTests.swift; sourceTree = "<group>"; };
 		A14CCC07215CEA1C00A699E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A14CCC11215CF07F00A699E6 /* iTunesAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesAPIClient.swift; sourceTree = "<group>"; };
+		A14CCC13215CF08B00A699E6 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		A14CCC15215CF09A00A699E6 /* SearchError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchError.swift; sourceTree = "<group>"; };
 		A14CCC18215CF11A00A699E6 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		C5F11579948FB9AF73A71294 /* Pods_iTunesSearchBasic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTunesSearchBasic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -101,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				A14CCC17215CF10A00A699E6 /* Model */,
+				A14CCC10215CF05400A699E6 /* Networking */,
 				A14CCBF0215CEA1B00A699E6 /* AppDelegate.swift */,
 				A14CCBF2215CEA1B00A699E6 /* ViewController.swift */,
 				A14CCBF4215CEA1B00A699E6 /* Main.storyboard */,
@@ -118,6 +125,16 @@
 				A14CCC07215CEA1C00A699E6 /* Info.plist */,
 			);
 			path = iTunesSearchBasicTests;
+			sourceTree = "<group>";
+		};
+		A14CCC10215CF05400A699E6 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A14CCC11215CF07F00A699E6 /* iTunesAPIClient.swift */,
+				A14CCC13215CF08B00A699E6 /* Result.swift */,
+				A14CCC15215CF09A00A699E6 /* SearchError.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		A14CCC17215CF10A00A699E6 /* Model */ = {
@@ -303,7 +320,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A14CCC19215CF11A00A699E6 /* Song.swift in Sources */,
+				A14CCC12215CF07F00A699E6 /* iTunesAPIClient.swift in Sources */,
+				A14CCC16215CF09A00A699E6 /* SearchError.swift in Sources */,
 				A14CCBF3215CEA1B00A699E6 /* ViewController.swift in Sources */,
+				A14CCC14215CF08B00A699E6 /* Result.swift in Sources */,
 				A14CCBF1215CEA1B00A699E6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
