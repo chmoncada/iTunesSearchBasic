@@ -25,10 +25,10 @@ class SearchMusicViewController: UIViewController {
 
 	// MARK: IBOutlets
 	@IBOutlet weak var placeholderLabel: UILabel!
-	@IBOutlet weak var tableView: UITableView!
+	@IBOutlet weak var songsTableView: UITableView!
 
 	private let cellIdentifier = "SongResultTableViewCell"
-	var presenter: SearchMusicPresenter!
+	var presenter: SearchMusicPresenterProtocol!
 
 	private weak var loadingView: UIActivityIndicatorView?
 	private var searchTask: DispatchWorkItem?
@@ -42,7 +42,7 @@ class SearchMusicViewController: UIViewController {
 
 		presenter = SearchMusicPresenter(view: self)
 
-		tableView.isHidden = true
+		songsTableView.isHidden = true
 		placeholderLabel.isHidden = false
 		placeholderLabel.text = "Puede buscar resultados usando la barra de búsqueda"
 	}
@@ -62,7 +62,7 @@ class SearchMusicViewController: UIViewController {
 
 		guard let detailVC = segue.destination as? SongDetailViewController else { fatalError() }
 
-		let indexPath = tableView.indexPathForSelectedRow!
+		let indexPath = songsTableView.indexPathForSelectedRow!
 		detailVC.song = presenter.song(at: indexPath.row)
 		detailVC.presenter = SongDetailPresenter(view: detailVC)
 	}
@@ -95,20 +95,20 @@ extension SearchMusicViewController: SearchMusicView {
 	func onFetchCompleted(with newIndexPathsToReload: [IndexPath]?) {
 		guard let newIndexPathsToReload = newIndexPathsToReload else {
 			stopLoading()
-			tableView.isHidden = false
-			tableView.reloadData()
+			songsTableView.isHidden = false
+			songsTableView.reloadData()
 			return
 		}
 		let indexPathsToReload = visibleIndexPathsToReload(intersecting: newIndexPathsToReload)
-		tableView.reloadRows(at: indexPathsToReload, with: .automatic)
+		songsTableView.reloadRows(at: indexPathsToReload, with: .automatic)
 	}
 
 	func reloadData() {
-		tableView.reloadData()
+		songsTableView.reloadData()
 	}
 
 	func setNoResultsMessage() {
-		tableView.isHidden = true
+		songsTableView.isHidden = true
 		placeholderLabel.isHidden = false
 		placeholderLabel.text = "No se encontraron resultados"
 	}
@@ -120,7 +120,7 @@ extension SearchMusicViewController {
 
 	// MARK: Pagination
 	private func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
-		let indexPathsForVisibleRows = tableView.indexPathsForVisibleRows ?? []
+		let indexPathsForVisibleRows = songsTableView.indexPathsForVisibleRows ?? []
 		let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
 		return Array(indexPathsIntersection)
 	}
@@ -184,7 +184,7 @@ extension SearchMusicViewController: UISearchResultsUpdating {
 			let text = searchController.searchBar.text,
 			!text.isEmpty
 		else {
-			tableView.isHidden = true
+			songsTableView.isHidden = true
 			placeholderLabel.isHidden = false
 			placeholderLabel.text = "Puede buscar resultados usando la barra de búsqueda"
 			presenter.clearResults()
@@ -195,7 +195,7 @@ extension SearchMusicViewController: UISearchResultsUpdating {
 		let task = DispatchWorkItem { [weak self] in
 			self?.query = text
 			self?.placeholderLabel.isHidden = true
-			self?.tableView.isHidden = false
+			self?.songsTableView.isHidden = false
 			self?.presenter.fetchSongs(with: text)
 		}
 		self.searchTask = task

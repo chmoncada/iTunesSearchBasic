@@ -12,7 +12,6 @@
 		A14CCBF6215CEA1B00A699E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14CCBF4215CEA1B00A699E6 /* Main.storyboard */; };
 		A14CCBF8215CEA1C00A699E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14CCBF7215CEA1C00A699E6 /* Assets.xcassets */; };
 		A14CCBFB215CEA1C00A699E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14CCBF9215CEA1C00A699E6 /* LaunchScreen.storyboard */; };
-		A14CCC06215CEA1C00A699E6 /* iTunesSearchBasicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14CCC05215CEA1C00A699E6 /* iTunesSearchBasicTests.swift */; };
 		A14CCC12215CF07F00A699E6 /* iTunesAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14CCC11215CF07F00A699E6 /* iTunesAPIClient.swift */; };
 		A14CCC14215CF08B00A699E6 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14CCC13215CF08B00A699E6 /* Result.swift */; };
 		A14CCC16215CF09A00A699E6 /* SearchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14CCC15215CF09A00A699E6 /* SearchError.swift */; };
@@ -27,6 +26,9 @@
 		A14CCC2D215D1B2C00A699E6 /* SongDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14CCC2C215D1B2C00A699E6 /* SongDetailViewController.swift */; };
 		A14CCC2F215D1B4F00A699E6 /* SongDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14CCC2E215D1B4F00A699E6 /* SongDetailPresenter.swift */; };
 		A14CCC31215D1B6A00A699E6 /* TrackListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14CCC30215D1B6A00A699E6 /* TrackListTableViewCell.swift */; };
+		A14CCC34215D222100A699E6 /* SongDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14CCC33215D222100A699E6 /* SongDetailPresenterTests.swift */; };
+		A14CCC36215D278400A699E6 /* SongDetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14CCC35215D278400A699E6 /* SongDetailViewControllerTests.swift */; };
+		A14CCC38215D326E00A699E6 /* SearchMusicViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14CCC37215D326E00A699E6 /* SearchMusicViewControllerTests.swift */; };
 		F59C896B41A0DF01633E5FD4 /* Pods_iTunesSearchBasic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5F11579948FB9AF73A71294 /* Pods_iTunesSearchBasic.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +55,6 @@
 		A14CCBFA215CEA1C00A699E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A14CCBFC215CEA1C00A699E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A14CCC01215CEA1C00A699E6 /* iTunesSearchBasicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTunesSearchBasicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A14CCC05215CEA1C00A699E6 /* iTunesSearchBasicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesSearchBasicTests.swift; sourceTree = "<group>"; };
 		A14CCC07215CEA1C00A699E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A14CCC11215CF07F00A699E6 /* iTunesAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesAPIClient.swift; sourceTree = "<group>"; };
 		A14CCC13215CF08B00A699E6 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -69,6 +70,9 @@
 		A14CCC2C215D1B2C00A699E6 /* SongDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailViewController.swift; sourceTree = "<group>"; };
 		A14CCC2E215D1B4F00A699E6 /* SongDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailPresenter.swift; sourceTree = "<group>"; };
 		A14CCC30215D1B6A00A699E6 /* TrackListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListTableViewCell.swift; sourceTree = "<group>"; };
+		A14CCC33215D222100A699E6 /* SongDetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailPresenterTests.swift; sourceTree = "<group>"; };
+		A14CCC35215D278400A699E6 /* SongDetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailViewControllerTests.swift; sourceTree = "<group>"; };
+		A14CCC37215D326E00A699E6 /* SearchMusicViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMusicViewControllerTests.swift; sourceTree = "<group>"; };
 		C5F11579948FB9AF73A71294 /* Pods_iTunesSearchBasic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTunesSearchBasic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -140,9 +144,9 @@
 		A14CCC04215CEA1C00A699E6 /* iTunesSearchBasicTests */ = {
 			isa = PBXGroup;
 			children = (
+				A14CCC32215D220700A699E6 /* SongDetail */,
 				A14CCC28215D01EE00A699E6 /* SearchMusic */,
 				A14CCC1A215CF24B00A699E6 /* Networking */,
-				A14CCC05215CEA1C00A699E6 /* iTunesSearchBasicTests.swift */,
 				A14CCC07215CEA1C00A699E6 /* Info.plist */,
 			);
 			path = iTunesSearchBasicTests;
@@ -190,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				A14CCC29215D020300A699E6 /* SearchMusicPresenterTests.swift */,
+				A14CCC37215D326E00A699E6 /* SearchMusicViewControllerTests.swift */,
 			);
 			path = SearchMusic;
 			sourceTree = "<group>";
@@ -200,6 +205,15 @@
 				A14CCC2C215D1B2C00A699E6 /* SongDetailViewController.swift */,
 				A14CCC2E215D1B4F00A699E6 /* SongDetailPresenter.swift */,
 				A14CCC30215D1B6A00A699E6 /* TrackListTableViewCell.swift */,
+			);
+			path = SongDetail;
+			sourceTree = "<group>";
+		};
+		A14CCC32215D220700A699E6 /* SongDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A14CCC33215D222100A699E6 /* SongDetailPresenterTests.swift */,
+				A14CCC35215D278400A699E6 /* SongDetailViewControllerTests.swift */,
 			);
 			path = SongDetail;
 			sourceTree = "<group>";
@@ -397,9 +411,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A14CCC1E215CF2AC00A699E6 /* MockURLSession.swift in Sources */,
-				A14CCC06215CEA1C00A699E6 /* iTunesSearchBasicTests.swift in Sources */,
+				A14CCC38215D326E00A699E6 /* SearchMusicViewControllerTests.swift in Sources */,
+				A14CCC36215D278400A699E6 /* SongDetailViewControllerTests.swift in Sources */,
 				A14CCC20215CF2E900A699E6 /* ResultTest.swift in Sources */,
 				A14CCC2A215D020300A699E6 /* SearchMusicPresenterTests.swift in Sources */,
+				A14CCC34215D222100A699E6 /* SongDetailPresenterTests.swift in Sources */,
 				A14CCC1C215CF26D00A699E6 /* iTunesAPIClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -22,7 +22,7 @@ class SongDetailPresenter {
 	typealias CollectionId = Int
 
 	weak var view: SongDetailView?
-	private let apiClient: iTunesAPIClient
+	private let apiClient: iTunesAPIClientProtocol
 
 	private var albumTracks: [Song] = [] {
 		didSet {
@@ -30,7 +30,7 @@ class SongDetailPresenter {
 		}
 	}
 
-	init(view: SongDetailView, apiClient: iTunesAPIClient = iTunesAPIClient()) {
+	init(view: SongDetailView, apiClient: iTunesAPIClientProtocol = iTunesAPIClient()) {
 		self.view = view
 		self.apiClient = apiClient
 	}

@@ -31,7 +31,7 @@ class SongDetailViewController: UIViewController {
 	// MARK: Properties
 
 	var song: Song!
-	var presenter: SongDetailPresenter!
+	var presenter: SongDetailPresenterProtocol!
 	let cellIdentifier = "TrackListTableViewCell"
 	private var player: AVPlayer?
 

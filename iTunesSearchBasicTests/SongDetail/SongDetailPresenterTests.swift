@@ -1,5 +1,5 @@
 //
-//  SearchMusicPresenterTests.swift
+//  SongDetailPresenterTests.swift
 //  iTunesSearchBasicTests
 //
 //  Created by Charles Moncada on 27/09/18.
@@ -9,82 +9,79 @@
 import XCTest
 @testable import iTunesSearchBasic
 
-class SearchMusicPresenterTests: XCTestCase {
+class SongDetailPresenterTests: XCTestCase {
 
-	var sut: SearchMusicPresenter!
+	var sut: SongDetailPresenter!
+	var mockView: MockSongDetailView!
 
 	override func setUp() {
 		super.setUp()
-		setupSearchMusicPresenter()
-		sut.fetchSongs(with: "result")
+		setupSongDetailPresenter()
 	}
 
 	override func tearDown() {
 		super.tearDown()
 	}
 
-	func setupSearchMusicPresenter() {
-		sut = SearchMusicPresenter(view: MockSearchView(), apiClient: MockiTunesAPIClient())
+	func setupSongDetailPresenter() {
+		mockView = MockSongDetailView()
+		sut = SongDetailPresenter(view: mockView, apiClient: MockiTunesAPIClient())
 	}
 
-	func testCurrentCountCorrect() {
-		XCTAssertEqual(2, sut.currentCount)
+	func testTracksCountCorrect() {
+
+		sut.fetchSongList(with: 123)
+
+		XCTAssertEqual(2, sut.tracksCount)
 	}
 
 	func testCorrectSongAtIndex() {
+		sut.fetchSongList(with: 123)
 		let song1 = Song(artistName: "REM", collectionName: "Out Of Time", collectionId: 1234, trackName: "Shinny Happy People", artworkUrl100: "https://empty.com", previewUrl: nil)
 		XCTAssertEqual(song1, sut.song(at: 0))
 	}
 
-	func testClearResults() {
-		sut.clearResults()
-		XCTAssertEqual(0, sut.currentCount)
-	}
-
 	func testSearchWithNoResults() {
-		sut.fetchSongs(with: "empty")
-		XCTAssertEqual(0, sut.currentCount)
+		sut.fetchSongList(with: 999)
+		XCTAssertEqual(0, sut.tracksCount)
 	}
 
+	func testSendingViewReloadData() {
+		sut.fetchSongList(with: 123)
+
+		XCTAssertTrue(mockView.isReloadingData)
+	}
 }
 
-extension SearchMusicPresenterTests {
-	class MockSearchView: SearchMusicView {
+extension SongDetailPresenterTests {
+	class MockSongDetailView: SongDetailView {
 
-		private(set) var isLoading = false
-		func startLoading() {
-			isLoading = true
-		}
-
-		func stopLoading() {
-			isLoading = false
-		}
-
-		func display(_ error: Error) {
-			//
-		}
-
-		func onFetchCompleted(with newIndexPathsToReload: [IndexPath]?) {
-			//
-		}
-
+		private(set) var isReloadingData = false
 		func reloadData() {
-			//
+			isReloadingData = true
 		}
 
-		func setNoResultsMessage() {
-			//
+		private(set) var isDisplayingError = false
+		func display(_ error: Error) {
+			isDisplayingError = true
 		}
+
 	}
 
 	class MockiTunesAPIClient: iTunesAPIClientProtocol {
 		func search(for term: String, page: Int, completion: @escaping (iTunesAPIClient.Result<iTunesSearchResponse, iTunesAPIClient.Error>) -> Void) {
+			let response = iTunesSearchResponse(resultCount: 0, results: [])
+			completion(.success(response))
+		}
+
+		func fetchSongList(for collectionId: Int, completion: @escaping (iTunesAPIClient.Result<iTunesSearchResponse, iTunesAPIClient.Error>) -> Void) {
 
 			let response: iTunesSearchResponse
-			if term == "result" {
+			if collectionId == 123 {
+				let fakeAlbum = Song(artistName: "REM", collectionName: "Out Of Time", collectionId: 1234, trackName: nil, artworkUrl100: "https://empty.com", previewUrl: nil)
 				let song1 = Song(artistName: "REM", collectionName: "Out Of Time", collectionId: 1234, trackName: "Shinny Happy People", artworkUrl100: "https://empty.com", previewUrl: nil)
 				let song2 = Song(artistName: "REM", collectionName: "Out Of Time", collectionId: 1234, trackName: "Losing My Religion", artworkUrl100: "https://empty.com", previewUrl: nil)
-				let songs = [song1, song2]
+				let songs = [fakeAlbum, song1, song2]
 				response = iTunesSearchResponse(resultCount: songs.count, results: songs)
 			} else {
 				response = iTunesSearchResponse(resultCount: 0, results: [])
@@ -92,12 +89,5 @@ extension SearchMusicPresenterTests {
 
 			completion(.success(response))
 		}
-
-		func fetchSongList(for collectionId: Int, completion: @escaping (iTunesAPIClient.Result<iTunesSearchResponse, iTunesAPIClient.Error>) -> Void) {
-			let response = iTunesSearchResponse(resultCount: 0, results: [])
-			completion(.success(response))
-		}
-
-
 	}
 }
