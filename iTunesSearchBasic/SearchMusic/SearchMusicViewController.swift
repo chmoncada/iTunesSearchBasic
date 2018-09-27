@@ -57,15 +57,15 @@ class SearchMusicViewController: UIViewController {
 		definesPresentationContext = true
 	}
 
-//	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//		guard segue.identifier == "songDetail" else { fatalError() }
-//
-//		guard let detailVC = segue.destination as? SongDetailViewController else { fatalError() }
-//
-//		let indexPath = tableView.indexPathForSelectedRow!
-//		detailVC.song = presenter.song(at: indexPath.row)
-//		detailVC.presenter = SongDetailPresenter(view: detailVC)
-//	}
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		guard segue.identifier == "songDetail" else { fatalError() }
+
+		guard let detailVC = segue.destination as? SongDetailViewController else { fatalError() }
+
+		let indexPath = tableView.indexPathForSelectedRow!
+		detailVC.song = presenter.song(at: indexPath.row)
+		detailVC.presenter = SongDetailPresenter(view: detailVC)
+	}
 }
 
 // MARK:- SearchMusicView protocol implementation
