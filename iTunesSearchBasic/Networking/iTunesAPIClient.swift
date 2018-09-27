@@ -13,7 +13,12 @@ struct iTunesSearchResponse: Decodable {
 	let results: [Song]
 }
 
-final class iTunesAPIClient {
+protocol iTunesAPIClientProtocol: class {
+	func search(for term: String, page: Int, completion: @escaping (iTunesAPIClient.Result<iTunesSearchResponse, iTunesAPIClient.Error>) -> Void)
+	func fetchSongList(for collectionId: Int, completion: @escaping (iTunesAPIClient.Result<iTunesSearchResponse, iTunesAPIClient.Error>) -> Void)
+}
+
+final class iTunesAPIClient: iTunesAPIClientProtocol {
 
 	typealias iTunesResult = iTunesAPIClient.Result<iTunesSearchResponse, iTunesAPIClient.Error>
 	typealias ResponseHandler = (iTunesResult) -> Void

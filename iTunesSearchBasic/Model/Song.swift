@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Song: Codable {
+struct Song: Codable, Equatable {
 	let artistName: String
 	let collectionName: String
 	let collectionId: Int
