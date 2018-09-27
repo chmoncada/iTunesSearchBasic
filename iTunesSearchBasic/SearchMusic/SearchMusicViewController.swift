@@ -34,9 +34,12 @@ class SearchMusicViewController: UIViewController {
 	private var searchTask: DispatchWorkItem?
 	private var query: String?
 
+	let transition = Animator()
+
 	override func viewDidLoad() {
 		navigationController?.navigationBar.prefersLargeTitles = true
 		navigationController?.navigationItem.largeTitleDisplayMode = .always
+		navigationController?.delegate = self
 
 		configureSearchController()
 
@@ -201,5 +204,18 @@ extension SearchMusicViewController: UISearchResultsUpdating {
 		self.searchTask = task
 
 		DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.75, execute: task)
+	}
+}
+
+extension SearchMusicViewController: UINavigationControllerDelegate {
+	func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+
+		guard operation == .push else { return nil }
+
+		let indexPath = (songsTableView.indexPathsForSelectedRows?.first)!
+		let cell = songsTableView.cellForRow(at: indexPath) as! SongResultTableViewCell
+		transition.originFrame = cell.superview!.convert(cell.frame, to: nil)
+
+		return transition
 	}
 }
